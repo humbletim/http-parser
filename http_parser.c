@@ -262,7 +262,7 @@ size_t http_parser_execute (http_parser *parser,
                             size_t len)
 {
   char c, ch;
-  const char *p, *pe;
+  const char *p = data, *pe;
   ssize_t to_read;
 
   enum state state = parser->state;
@@ -283,7 +283,7 @@ size_t http_parser_execute (http_parser *parser,
   if (parser->path_mark)           parser->path_mark           = data;
   if (parser->url_mark)            parser->url_mark            = data;
 
-  for (p=data, pe=data+len; p != pe; p++) {
+  for (/*p=data,*/ pe=data+len; p != pe; p++) {
     ch = *p;
     switch (state) {
 
